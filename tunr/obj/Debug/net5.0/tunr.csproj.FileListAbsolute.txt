@@ -155,3 +155,5 @@ C:\Users\cesar\Documents\repos\c#_exercises\tunr\tunr\bin\Debug\net5.0\zh-Hant\M
 C:\Users\cesar\Documents\repos\c#_exercises\tunr\tunr\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\cesar\Documents\repos\c#_exercises\tunr\tunr\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\cesar\Documents\repos\c#_exercises\tunr\tunr\obj\Debug\net5.0\Razor\Views\Users\New.cshtml.g.cs
+C:\Users\cesar\Documents\repos\c#_exercises\tunr\tunr\obj\Debug\net5.0\Razor\Views\Mixtapes\Index.cshtml.g.cs
+C:\Users\cesar\Documents\repos\c#_exercises\tunr\tunr\obj\Debug\net5.0\Razor\Views\Mixtapes\New.cshtml.g.cs

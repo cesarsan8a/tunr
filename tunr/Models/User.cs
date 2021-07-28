@@ -7,9 +7,11 @@ namespace tunr.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
+
+        public ICollection<Mixtape> Mixtapes { get; set; }
     }
 }

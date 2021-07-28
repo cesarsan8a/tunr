@@ -1,0 +1,19 @@
+﻿@model tunr.Models.Mixtape
+
+@{
+    ViewData["Title"] = "New Mixtape";
+}
+
+<form action="Submit" method="post">
+    <label>Title</label>
+    <input type="text" name="MixtapeTitle" value="" />
+
+    <br />
+
+    <label>Tags</label>
+    <input type="text" name="MixtapeTags" value="" />
+
+    <br />
+
+    <input id="SubmitButton1" type="button" value="Submit" />
+</form>
