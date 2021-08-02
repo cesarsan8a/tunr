@@ -20,19 +20,129 @@ namespace tunr.Controllers
             _context = context;
         }
 
+        // GET: Mixtapes
         public async Task<IActionResult> Index()
         {
             return View(await _context.Mixtapes.ToListAsync());
         }
 
+        // GET: Student/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var mixtape = await _context.Mixtapes.FirstOrDefaultAsync(m => m.ID == id);
+            if (mixtape == null)
+            {
+                return NotFound();
+            }
+
+            return View(mixtape);
+        }
+
+        //GET: MIxtapes/New
         public IActionResult New()
         {
             return View();
         }
 
-        public IActionResult Submit(string MixtapeTitle, string MixtapeTags)
+        // POST: Mixtapes/New
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> New([Bind("ID, Title, Tags")] Mixtape mixtape)
         {
-            return Content("You had submitted" + MixtapeTitle);
+            if (ModelState.IsValid)
+            {
+                _context.Add(mixtape);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(mixtape);
+        }
+
+        // GET: Mixtapes/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var mixtape = await _context.Mixtapes.FindAsync(id);
+            if (mixtape == null)
+            {
+                return NotFound();
+            }
+            return View(mixtape);
+        }
+
+        // POST: Mixtapes/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit (int id, [Bind("ID, Title, Tags")] Mixtape mixtape)
+        {
+            if (id != mixtape.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(mixtape);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MixtapeExists(mixtape.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(mixtape);
+        }
+
+        // GET: Mixtapes/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var mixtape = await _context.Mixtapes.FirstOrDefaultAsync(m => m.ID == id);
+            if (mixtape == null)
+            {
+                return NotFound();
+            }
+
+            return View(mixtape);
+        }
+
+        // POST: Mixtapes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var mixtape = await _context.Mixtapes.FindAsync(id);
+            _context.Mixtapes.Remove(mixtape);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool MixtapeExists(int id)
+        {
+            return _context.Mixtapes.Any(e => e.ID == id);
         }
     }
 }
