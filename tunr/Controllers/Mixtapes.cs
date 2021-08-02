@@ -4,13 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.EntityFrameworkCore;
+using tunr.Data;
+using tunr.Models;
+
+
 namespace tunr.Controllers
 {
     public class Mixtapes : Controller
     {
-        public IActionResult Index()
+        private readonly tunrContext _context;
+
+        public Mixtapes(tunrContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Mixtapes.ToListAsync());
         }
 
         public IActionResult New()
