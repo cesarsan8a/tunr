@@ -26,7 +26,7 @@ namespace tunr.Controllers
             return View(await _context.Mixtapes.ToListAsync());
         }
 
-        // GET: Student/Details/5
+        // GET: Mixtapes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,7 +43,19 @@ namespace tunr.Controllers
             return View(mixtape);
         }
 
-        //GET: MIxtapes/New
+        //GET: Mixtapes/ShowSearchForm
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return View();
+        }
+
+        // POST: Mixtapes/ShowSearchResults
+        public async Task<IActionResult> ShowSearchResults(string SearchWord)
+        {
+            return View("Index", await _context.Mixtapes.Where(m => m.Tags.Contains(SearchWord)).ToListAsync());
+        }
+
+        //GET: Mixtapes/New
         public IActionResult New()
         {
             return View();
