@@ -5,6 +5,7 @@
 }
 
 <a class="nav-link text-dark" asp-area="" asp-controller="Mixtapes" asp-action="New">Create a new mixtape</a>
+<a class="nav-link text-dark" asp-area="" asp-controller="Mixtapes" asp-action="ShowSearchForm">Search</a>
 
 <table class="table">
     <thead>
@@ -15,7 +16,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Tags)
             </th>
-            <th></th>
+            <th>
+                Options
+            </th>
         </tr>
     </thead>
     <tbody>

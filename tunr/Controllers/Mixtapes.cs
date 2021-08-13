@@ -46,14 +46,20 @@ namespace tunr.Controllers
         //GET: Mixtapes/ShowSearchForm
         public async Task<IActionResult> ShowSearchForm()
         {
-            return View();
+            return View(await _context.Mixtapes.ToListAsync());
         }
 
         // POST: Mixtapes/ShowSearchResults
-        public async Task<IActionResult> ShowSearchResults(string SearchWord)
-        {
-            return View("Index", await _context.Mixtapes.Where(m => m.Tags.Contains(SearchWord)).ToListAsync());
-        }
+        //public async Task<IActionResult> ShowSearchResults( string stringSearch)
+        //{
+        //    var searchResult = new Mixtape
+        //    {
+        //        //Tags = await _context.Mixtapes.Where(j => j.Tags.Contains(stringSearch)).ToListAsync()
+        //        //Title = await mixtapeTitles.ToListAsync()
+        //    };
+
+        //    return View("Index", searchResult);
+        //}
 
         //GET: Mixtapes/New
         public IActionResult New()

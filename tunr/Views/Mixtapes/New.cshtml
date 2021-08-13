@@ -1,19 +1,37 @@
 ﻿@model tunr.Models.Mixtape
 
+
 @{
     ViewData["Title"] = "New Mixtape";
 }
 
-<form action="Submit" method="post">
-    <label>Title</label>
-    <input type="text" name="MixtapeTitle" value="" />
+<h1>New Mixtape</h1>
 
-    <br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="New">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
 
-    <label>Tags</label>
-    <input type="text" name="MixtapeTags" value="" />
+            <div class="form-group">
+                <label asp-for="Tags" class="control-label">Tags</label>
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
 
-    <br />
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label">User</label>
+                <input asp-for="UserID" class="form-control" />
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
 
-    <input id="SubmitButton1" type="button" value="Submit" />
-</form>
+            <div class="form-group">
+                <input type="submit" value="New" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
