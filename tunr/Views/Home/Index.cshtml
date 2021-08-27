@@ -2,6 +2,15 @@
     ViewData["Title"] = "Home Page";
 }
 
+@if (User.Identity.IsAuthenticated)
+            {
+                <p>@User.Identity.Name is signed in.</p>
+            }
+else
+            {
+                <p>No user is signed in.</p>
+            }
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>

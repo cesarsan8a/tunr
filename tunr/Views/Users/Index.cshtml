@@ -1,0 +1,10 @@
+﻿@model IEnumerable<tunr.Models.User>;
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@foreach (var user in Model)
+ {
+    @Html.DisplayFor(modelUser => user.Name)
+ }
